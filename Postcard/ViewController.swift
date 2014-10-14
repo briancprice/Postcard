@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     // Label for recipient's name...
+    @IBOutlet weak var nameLabel: UILabel!;
+    
+    // Label for message being sent.
     @IBOutlet weak var messageLabel: UILabel!;
     
     // Recipient's name text field...
@@ -35,14 +38,24 @@ class ViewController: UIViewController {
     // When pressed, shows the messageLabel and updates the text
     // to that of the enterNameTextField
     @IBAction func sendMailButtonPressed(sender: UIButton) {
+        // Configure the message label
         messageLabel.hidden = false;
         messageLabel.text = enterMessageTextField.text;
         messageLabel.textColor = UIColor.redColor();
         
-        // here is a brand new comment.
-        
+        // Clear the input labels
         enterMessageTextField.text = "";
         enterMessageTextField.resignFirstResponder();
+
+      
+        // Configure the name label
+        nameLabel.hidden = false;
+        nameLabel.text = enterNameTextField.text;
+        nameLabel.textColor = UIColor.blueColor();
+        
+        
+        enterNameTextField.text = "";
+        enterNameTextField.resignFirstResponder();
         
         mailButton.setTitle("Mail Sent", forState: UIControlState.Normal);
         
